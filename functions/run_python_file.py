@@ -2,7 +2,7 @@ import os
 import subprocess
 from google.genai import types
 
-def run_python_file(working_directory, file_path, args=[]):
+def run_python_file(working_directory: str, file_path: str, args=[]) -> str:
         abs_working_dir = os.path.abspath(working_directory)
         abs_file_path = os.path.abspath(os.path.join(working_directory, file_path))
         common = os.path.commonpath([abs_working_dir, abs_file_path])
@@ -25,7 +25,7 @@ def run_python_file(working_directory, file_path, args=[]):
                     timeout=30,
                     cwd=abs_working_dir
                 )
-              output = []
+              output: list[str] = []
               if result.stdout:
                     output.append(f"STDOUT:\n{result.stdout}")
               if result.stderr:
