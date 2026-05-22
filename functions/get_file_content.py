@@ -2,7 +2,7 @@ import os
 from google.genai import types
 from config import MAX_CHARS
 
-def get_file_content(working_directory, file_path):
+def get_file_content(working_directory: str, file_path: str) -> str:
     abs_working_dir = os.path.abspath(working_directory)
     abs_file_path = os.path.abspath(os.path.join(abs_working_dir, file_path))
     common = os.path.commonpath([abs_working_dir, abs_file_path])
