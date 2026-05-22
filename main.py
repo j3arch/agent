@@ -10,7 +10,7 @@ from call_function import call_function, available_functions
 from config import MAX_ITERS
 
 
-def main():
+def main() -> None:
     load_dotenv()
 
     parser = argparse.ArgumentParser()
@@ -46,7 +46,7 @@ def main():
         except Exception as e:
             print(f"Error in generate_content: {e}")
 
-def generate_content(client, messages, verbose):
+def generate_content(client: genai.Client, messages: list[types.Content], verbose: bool):
     response = client.models.generate_content(
         model="gemini-2.0-flash-001",
         contents=messages,
